@@ -14,13 +14,15 @@ using std::setw;
 
 void CreateArray(int *c, const int LeftLimit, const int RightLimit, const int size, const int i);
 void PrintArray(int *c, const int size, const int i);
-void Sum(int *c, const int size, int Number, int S, const int i);
+void Sum(int *c, const int size, int &S, int &Number, const int i);
 void Replace(int *c, const int size, const int i);
 
 int main()
 {
 	srand((unsigned)time(NULL));
 
+	int S = 0;
+	int k = 0;
 	int A = 15;
 	int B = 85;
 	const int n = 21;
@@ -28,8 +30,13 @@ int main()
 
 	CreateArray(c, A, B, n, 0);
 	PrintArray(c, n, 0);
-	Sum(c, n, 0, 0, 0);
+	Sum(c, n, S, k, 0);
 	Replace(c, n, 0);
+	PrintArray(c, n, 0);
+
+	cout << "Sum of elements replaced = " << S << endl;
+	cout << "Number of elements replaced = " << k << endl << endl;
+
 }
 
 void CreateArray(int *c, const int LeftLimit, const int RightLimit, const int size, const int i)
@@ -60,11 +67,9 @@ void Replace(int *c, const int size, const int i)
 
 	if (i < size - 1)
 		Replace(c, size, i + 1);
-	else
-		PrintArray(c, size, 0);
 }
 
-void Sum(int *c, const int size, int Number, int S, const int i)
+void Sum(int *c, const int size, int &S, int &Number, const int i)
 {
 		if (c[i] % 2 && c[i] % 13 != 0)
 		{
@@ -73,10 +78,5 @@ void Sum(int *c, const int size, int Number, int S, const int i)
 		}
 
 		if (i < size - 1)
-			Sum(c, size, Number, S, i + 1);
-		else
-		{
-			cout << "Sum of elements to be replaced = " << S << endl;
-			cout << "Number of elements to be replaced = " << Number << endl << endl;
-		}			
+			Sum(c, size, S, Number, i + 1);		
 }
