@@ -62,7 +62,7 @@ void PrintArray(int *c, const int size, const int i)
 
 void Replace(int *c, const int size, const int i)
 {
-	if (c[i] % 2 && c[i] % 13 != 0)
+	if (c[i] % 2 && i % 13 != 0)
 		c[i] = 0;
 
 	if (i < size - 1)
@@ -71,7 +71,7 @@ void Replace(int *c, const int size, const int i)
 
 void Sum(int *c, const int size, int &S, int &Number, const int i)
 {
-		if (c[i] % 2 && c[i] % 13 != 0)
+		if (c[i] % 2 && i % 13 != 0)
 		{
 			S += c[i];
 			Number++;
